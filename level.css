@@ -14,10 +14,23 @@
     background-image: url("static/pixil-frame-0.png");
 
 }
-.ball{
-    background-color: green;
-    border: 5px solid white;
+.ball,
+.super {
     box-sizing: border-box;
     border-radius: 50%;
+}
+.ball {
+        background-color: green;
+        border: 5px solid white;
+}
+.super {
+    background-color: red;
+    border: 3px solid white;
+    animation: blinker 2s linear infinite;
+}
 
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }
