@@ -50,11 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (layout[i] === WALL) {
         squares[i].classList.add('pieces_of_wall_horizontally')
       } else if (layout[i] === SUPER) {
-        squares[i].classList.add('ball', 'super')
+        squares[i].classList.add('super')
       }
     }
   }
   createBoard()
-
-
 })
