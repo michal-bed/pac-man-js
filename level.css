@@ -4,6 +4,7 @@
     width: 560px;
     height: 560px;
     border: solid black;
+    background-color: white;
 }
 .grid div{
     width: 20px;
@@ -14,7 +15,8 @@
     background-image: url("static/pixil-frame-0.png");
 
 }
-.ball{
+
+.ball {
     background-color: green;
     border: 5px solid white;
     box-sizing: border-box;
