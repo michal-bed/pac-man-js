@@ -5,10 +5,13 @@ let ballCount = 0;
 let grid;
 let scoreDisplay;
 let createGrid = null;
+
+import {pacmanCurrentIndex} from "./pac_man";
 let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
 export { width, ballCount, squares, grid, scoreDisplay, createGrid, move_pacman };
+
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
                 1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -74,6 +77,7 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
   createBoard()
   squares[pacmanCurrentIndex].classList.add('pac-man')
 })
+
 
 class Pacman{
     constructor(position, time=null, direction='', superBall=false, speed=0) {
@@ -155,6 +159,7 @@ const eatBall = function (square, superBallActive) {
 }
 
 
+
 window.onload = function () {
     const startGameButton = document.querySelector('#start-button');
     const menu = document.querySelector('.menu');
@@ -163,6 +168,8 @@ window.onload = function () {
         overlay.classList.add('hide');
         menu.classList.add('hide');
     };
+
     startGameButton.addEventListener('click', hideMenu);
+
 }
 
