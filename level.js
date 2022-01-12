@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
       } else if (layout[i] === WALL) {
         squares[i].classList.add('pieces_of_wall_horizontally')
       } else if (layout[i] === SUPER) {
-        squares[i].classList.add'super')
+        squares[i].classList.add('super')
       } else if (layout[i] === GHOST_HOME) {
-          squares[i].classList.add('home')
+          squares[i].classList.add('home');
       }
     }
   }
@@ -137,16 +137,13 @@ function move_pacman() {
 }
 
 window.onload = function () {
-    console.log('startGame');
-    const startGame = document.querySelector('#new-game');
+    const startGame = document.querySelector('#start-button');
     const menu = document.querySelector('.menu');
     const overlay = document.querySelector('.overlay');
     const hideMenu = function () {
-        console.log('OK');
         overlay.classList.add('hidden');
         menu.classList.add('hidden');
     };
-    console.log('startGame');
     console.log(startGame);
     startGame.addEventListener('click', hideMenu);
 }

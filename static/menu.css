@@ -36,11 +36,11 @@ body {
     background: white;
 }
 
-#new-game {
+#start-button {
     margin-top: 135px;
 }
 
-#new-game:hover {
+#start-button:hover {
     background: red;
 }
 
