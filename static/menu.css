@@ -13,8 +13,8 @@ body {
     background-image: url("./image/pacman-menu.jpg");
     background-size: cover;
     position: absolute;
-    width: 325px;
-    height: 250px;
+    width: 487px;
+    height: 375px;
     padding-left: 20px;
     top: 50%;
     left: 50%;
@@ -31,12 +31,13 @@ body {
 .menu-button {
     border-style: none;
     margin-bottom: 8px;
-    margin-left: 95px;
+    margin-left: 130px;
+    font-size: 20px;
     background: white;
 }
 
 #new-game {
-    margin-top: 90px;
+    margin-top: 135px;
 }
 
 #new-game:hover {

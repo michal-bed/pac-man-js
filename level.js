@@ -59,3 +59,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   createBoard()
 })
+
+
+window.onload = function () {
+    console.log('startGame');
+    const startGame = document.querySelector('#new-game');
+    const menu = document.querySelector('.menu');
+    const overlay = document.querySelector('.overlay');
+    const hideMenu = function () {
+        console.log('OK');
+        overlay.classList.add('hidden');
+        menu.classList.add('hidden');
+    };
+    console.log('startGame');
+    console.log(startGame);
+    startGame.addEventListener('click', hideMenu);
+}
