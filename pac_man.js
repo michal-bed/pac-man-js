@@ -1,6 +1,6 @@
 import {squares, width} from "./level";
 let pacmanCurrentIndex = 490
-export {move_pacman, pacmanCurrentIndex, pacman}
+export {move_pacman, pacmanCurrentIndex, Pacman}
 function move_pacman() {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
 
@@ -67,12 +67,13 @@ function move_pacman() {
 
 }
 
-class pacman {
-    constructor(pos = 490, time = null, direction = '', powerPill = false, speed = 0) {
-        this.pos = pos;
+class Pacman{
+    constructor(position = 490, time=null, direction='', superBall=false, speed=0) {
+        this.position = position;
         this.time = time;
         this.direction = direction;
-        this.powerPill = powerPill
+        this.superBall = superBall
         this.speed = speed
     }
+
 }
