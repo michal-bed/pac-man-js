@@ -4,9 +4,18 @@
     <title>Javascript Game</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="level.css">
+    <link rel="stylesheet" href="static/menu.css">
     <script src="level.js" charset="utf-8"></script>
 </head>
 <body>
+    <div class="menu">
+        <button class="menu-button close-modal" id="new-game">NEW GAME</button>
+        <button class="menu-button" id="instruction">INSTRUCTION</button>
+        <button class="menu-button" id="high-score">HIGH SCORE</button>
+        <button class="menu-button" id="credits">CREDITS</button>
+
+    </div>
+    <div class="overlay show-menu close-menu"></div>
     <div class="grid"></div>
     <h3>Score:<span id="score">0</span></h3>
 

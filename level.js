@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const BALL = 0
     const WALL = 1
     const SUPER = 3
+    const GHOST_HOME = 2
 
   function createBoard() {
     for (let i = 0; i < layout.length; i++) {
@@ -51,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
         squares[i].classList.add('pieces_of_wall_horizontally')
       } else if (layout[i] === SUPER) {
         squares[i].classList.add('ball', 'super')
+      } else if (layout[i] === GHOST_HOME) {
+          squares[i].classList.add('home')
       }
     }
   }
   createBoard()
-
-
 })
