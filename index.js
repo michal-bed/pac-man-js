@@ -51,7 +51,6 @@ function gameOver(pacman) {
   gameBoard.showGameStatus(gameWin);
 
   clearInterval(timer);
-  // Show startbutton
   startButton.classList.remove('hide');
 }
 
