@@ -4,6 +4,8 @@
     width: 560px;
     height: 560px;
     border: solid black;
+    background-color: white;
+    margin: auto;
 }
 
 .grid div {
@@ -33,6 +35,14 @@
     animation: blinker 2s linear infinite;
 }
 
+
+
+
+.pac-man {
+    background-color: yellow;
+    border-radius: 10px;
+}
+
 @keyframes blinker {
     50% {
         opacity: 0;
@@ -47,4 +57,3 @@
     height: 17px;
     border-top: 3px solid black;
 }
-
