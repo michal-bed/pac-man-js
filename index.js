@@ -1,6 +1,7 @@
-import { createGrid, squares, ballCount, grid, move_pacman } from "./level"
+import { createGrid, squares, ballCount, grid} from "./level"
 import { OBJECT_TYPE } from './setup';
 import { randomMovement } from './ghostmoves';
+import {move_pacman, pacman} from "./pac_man";
 // Classes
 import GameBoard from './GameBoard';
 // import Pacman from './Pacman';
@@ -55,11 +56,13 @@ function gameOver(pacman) {
   startButton.classList.remove('hide');
 }
 
+
+
 function checkCollision(pacman, ghosts) {
   const collidedGhost = ghosts.find((ghost) => pacman.pos === ghost.pos);
 
   if (collidedGhost) {
-    if (pacman.powerPill) {
+    if (Pacman.powerPill) {
       playAudio(soundGhost);
       gameBoard.removeObject(collidedGhost.pos, [
         OBJECT_TYPE.GHOST,
@@ -75,6 +78,8 @@ function checkCollision(pacman, ghosts) {
     }
   }
 }
+
+
 
 function gameLoop(pacman, ghosts) {
   // 1. Move Pacman
@@ -135,7 +140,7 @@ function startGame() {
   startButton.classList.add('hide');
 
   createGrid()
-  move_pacman()
+
   document.addEventListener('keydown', move_pacman)
  // const pacman = new Pacman(2, 287);
  //  gameBoard.addObject(287, [OBJECT_TYPE.PACMAN]);

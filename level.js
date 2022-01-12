@@ -5,7 +5,8 @@ let ballCount = 0;
 let grid;
 let scoreDisplay;
 let createGrid = null;
-export { width, ballCount, squares, grid, scoreDisplay, createGrid, move_pacman };
+import {pacmanCurrentIndex} from "./pac_man";
+export { width, ballCount, squares, grid, scoreDisplay, createGrid};
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
                 1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -72,70 +73,6 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
   squares[pacmanCurrentIndex].classList.add('pac-man')
 })
 
-class Pacman{
-    constructor(position, time=null, direction='', PowerPill=false, speed=0) {
-        this.position = position;
-        this.time = time;
-        this.direction = direction;
-        this.Powerpill = PowerPill
-        this.speed = speed
-    }
-
-}
-let pacmanCurrentIndex = 490
-
-
-
-
-function move_pacman() {
-        squares[pacmanCurrentIndex].classList.remove('pac-man')
-        window.addEventListener("keydown", function (event) {
-        if (event.defaultPrevented) {
-            return;
-        }
-        switch (event.key) {
-            case "a":
-            case "ArrowLeft":
-                if(pacmanCurrentIndex % width !== 0 && !squares[pacmanCurrentIndex - 1].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex -= 1
-                }
-                break;
-            case "w":
-            case "ArrowUp":
-                if(pacmanCurrentIndex - width >= 0 && !squares[pacmanCurrentIndex - width].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex -= width
-                }
-                break;
-
-            case "d":
-            case "ArrowRight":
-                if(pacmanCurrentIndex % width < width -1 && !squares[pacmanCurrentIndex + 1].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex + 1].classList.contains('ghost-lair')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex += 1
-                }
-                break;
-            case "s":
-            case "ArrowDown":
-                if(pacmanCurrentIndex + width < width * width && !squares[pacmanCurrentIndex + width].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex += width
-                }
-                break;
-
-            default:
-                return;
-        }
-        event.preventDefault();
-    }, true);
-    squares[pacmanCurrentIndex].classList.add('pac-man')
-}
-
 window.onload = function () {
     const startGame = document.querySelector('#start-button');
     const menu = document.querySelector('.menu');
@@ -144,6 +81,5 @@ window.onload = function () {
         overlay.classList.add('hidden');
         menu.classList.add('hidden');
     };
-    console.log(startGame);
     startGame.addEventListener('click', hideMenu);
 }
