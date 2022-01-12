@@ -7,6 +7,7 @@ let scoreDisplay;
 let createGrid = null;
 let ballPoints = 10;
 let superPoints = 30;
+let score = 0;
 export { width, ballCount, squares, grid, scoreDisplay, createGrid, move_pacman };
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
@@ -89,7 +90,7 @@ let pacmanCurrentIndex = 490
 
 
 
-function move_pacman(score, superBallActive) {
+function move_pacman(superBallActive) {
         squares[pacmanCurrentIndex].classList.remove('pac-man')
         window.addEventListener("keydown", function (event) {
         if (event.defaultPrevented) {
@@ -136,10 +137,10 @@ function move_pacman(score, superBallActive) {
         event.preventDefault();
     }, true);
     squares[pacmanCurrentIndex].classList.add('pac-man')
-    eatBall(squares[pacmanCurrentIndex], score, superBallActive)
+    eatBall(squares[pacmanCurrentIndex], superBallActive)
 }
 
-const eatBall = function (square, score, superBallActive) {
+const eatBall = function (square, superBallActive) {
     if(square.classList.contains('ball')) {
         square.classList.remove('ball');
         score += ballPoints;
@@ -150,6 +151,7 @@ const eatBall = function (square, score, superBallActive) {
         ballCount ++;
         superBallActive = true;
     }
+    document.getElementById('score').textContent = score;
 }
 
 
