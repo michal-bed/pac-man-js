@@ -1,11 +1,9 @@
-'use strict';
-
-document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.querySelector('.grid')
-    const scoreDisplay = document.getElementById('score')
-    const width = 28
-    const layout = [
-    1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+const width = 28;
+let ballCount = 0;
+let grid;
+let scoreDisplay;
+let createGrid = null;
+const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
     1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
     1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -34,12 +32,23 @@ document.addEventListener('DOMContentLoaded', () => {
     1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
     1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
   ]
-    const squares = []
-    const BALL = 0
-    const WALL = 1
-    const SUPER = 3
+'use strict';
 
+document.addEventListener('DOMContentLoaded', () => {
+   
+    
+const squares = [];
+const BALL = 0;
+const WALL = 1;
+const SUPER = 3
+document.addEventListener('DOMContentLoaded', createGrid = () => {
+    // console.log("DOMContentLoaded event!")
+  grid = document.querySelector('.grid');
+  scoreDisplay = document.getElementById('score')
   function createBoard() {
+      grid.innerHTML = '';
+      squares.length = 0;
+      ballCount = 0;
     for (let i = 0; i < layout.length; i++) {
       const square = document.createElement('div')
       grid.appendChild(square)
@@ -47,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if(layout[i] === BALL) {
         squares[i].classList.add('ball')
-      } else if(layout[i] === 2){
-          squares[i].classList.add('ghost-lair')
+
+        ballCount++;
       } else if (layout[i] === WALL) {
         squares[i].classList.add('pieces_of_wall_horizontally')
       } else if (layout[i] === SUPER) {
@@ -56,9 +65,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
+  createBoard()
+})
 
-    createBoard()
-    class Pacman{
+export { width, ballCount, squares, grid, scoreDisplay, createGrid };
+
+
+class Pacman{
     constructor(position, time=null, direction='', PowerPill=false, speed=0) {
         this.position = position;
         this.time = time;
@@ -129,4 +142,3 @@ move_pacman()
 
 
 })
-
