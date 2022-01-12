@@ -3,6 +3,7 @@ let ballCount = 0;
 let grid;
 let scoreDisplay;
 let createGrid = null;
+export { width, ballCount, squares, grid, scoreDisplay, createGrid, move_pacman };
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
                 1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -62,9 +63,9 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
     }
   }
   createBoard()
+  squares[pacmanCurrentIndex].classList.add('pac-man')
 })
 
-export { width, ballCount, squares, grid, scoreDisplay, createGrid };
 class Pacman{
     constructor(position, time=null, direction='', PowerPill=false, speed=0) {
         this.position = position;
@@ -77,7 +78,7 @@ class Pacman{
 }
 let pacmanCurrentIndex = 490
 
-squares[pacmanCurrentIndex].classList.add('pac-man')
+
 
 
 function move_pacman() {
@@ -130,5 +131,3 @@ function move_pacman() {
     squares[pacmanCurrentIndex].classList.add('pac-man')
 }
 
-move_pacman()
-document.addEventListener('keydown', move_pacman)

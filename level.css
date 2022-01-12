@@ -1,15 +1,15 @@
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 840px;
-    height: 840px;
+    width: 560px;
+    height: 560px;
     border: solid black;
     background-color: white;
     margin: auto;
 }
 .grid div{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
 
 .pieces_of_wall_horizontally{

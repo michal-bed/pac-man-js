@@ -1,4 +1,5 @@
 import { width } from './level'
+const BOARD_SIZE = 28;
 
 export const DIRECTIONS = {
   ArrowLeft: {

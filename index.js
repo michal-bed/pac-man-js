@@ -1,4 +1,4 @@
-import { createGrid, squares, ballCount, grid } from "./level"
+import { createGrid, squares, ballCount, grid, move_pacman } from "./level"
 import { OBJECT_TYPE } from './setup';
 import { randomMovement } from './ghostmoves';
 // Classes
@@ -135,7 +135,8 @@ function startGame() {
   startButton.classList.add('hide');
 
   createGrid()
-
+  move_pacman()
+  document.addEventListener('keydown', move_pacman)
  // const pacman = new Pacman(2, 287);
  //  gameBoard.addObject(287, [OBJECT_TYPE.PACMAN]);
  //  document.addEventListener('keydown', (e) =>
