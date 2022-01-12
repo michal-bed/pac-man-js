@@ -4,20 +4,27 @@
     <title>Javascript Game</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="level.css">
-    <link rel="stylesheet" href="static/style.css">
-    <script src="level.js" charset="utf-8"></script>
-    <script src="index.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="static/menu.css">
+
 </head>
 <body>
-    <div id="wrapper">
-        <div class="grid"></div>
-        <button id="start-button">Start Game</button>
-        <div id="score"></div>
-    </div>
-  <div class="fx">
+  <div class="menu">
+        <button class="menu-button close-modal" id="start-button">NEW GAME</button>
+        <button class="menu-button" id="instruction">INSTRUCTION</button>
+        <button class="menu-button" id="high-score">HIGH SCORE</button>
+        <button class="menu-button" id="credits">CREDITS</button>
+  </div>
+  <div class="overlay show-menu close-menu"></div>
+  <div id="wrapper">
+      <div class="grid"></div>
+      <div id="score">0</div>
+  </div>
+<!--   <div class="fx">
   <div class="flex">
     <pre id="console-log"></pre>
   </div>
-</div>
+  </div> -->
+<script src="index.js" charset="utf-8"></script>
+<script src="level.js" charset="utf-8"></script>
 </body>
 </html>

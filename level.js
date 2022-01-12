@@ -1,3 +1,5 @@
+'use strict';
+
 const width = 28;
 let ballCount = 0;
 let grid;
@@ -33,15 +35,17 @@ const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
                 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
               ]
-'use strict';
+
 
 const squares = [];
 const BALL = 0;
 const WALL = 1;
 const SUPER = 3
+const GHOST_HOME = 2
 document.addEventListener('DOMContentLoaded', createGrid = () => {
   grid = document.querySelector('.grid');
   scoreDisplay = document.getElementById('score')
+
   function createBoard() {
       grid.innerHTML = '';
       squares.length = 0;
@@ -58,7 +62,9 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
       } else if (layout[i] === WALL) {
         squares[i].classList.add('pieces_of_wall_horizontally')
       } else if (layout[i] === SUPER) {
-        squares[i].classList.add('super')
+        squares[i].classList.add'super')
+      } else if (layout[i] === GHOST_HOME) {
+          squares[i].classList.add('home')
       }
     }
   }
@@ -125,9 +131,22 @@ function move_pacman() {
             default:
                 return;
         }
-
         event.preventDefault();
     }, true);
     squares[pacmanCurrentIndex].classList.add('pac-man')
 }
 
+window.onload = function () {
+    console.log('startGame');
+    const startGame = document.querySelector('#new-game');
+    const menu = document.querySelector('.menu');
+    const overlay = document.querySelector('.overlay');
+    const hideMenu = function () {
+        console.log('OK');
+        overlay.classList.add('hidden');
+        menu.classList.add('hidden');
+    };
+    console.log('startGame');
+    console.log(startGame);
+    startGame.addEventListener('click', hideMenu);
+}

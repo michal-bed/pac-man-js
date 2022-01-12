@@ -7,12 +7,13 @@
     background-color: white;
     margin: auto;
 }
-.grid div{
+
+.grid div {
     width: 20px;
     height: 20px;
 }
 
-.pieces_of_wall_horizontally{
+.pieces_of_wall_horizontally {
     background-image: url("static/pixil-frame-0.png");
 
 }
@@ -22,10 +23,12 @@
     box-sizing: border-box;
     border-radius: 50%;
 }
+
 .ball {
-        background-color: green;
-        border: 5px solid white;
+    background-color: green;
+    border: 5px solid white;
 }
+
 .super {
     background-color: red;
     border: 3px solid white;
@@ -41,8 +44,16 @@
 }
 
 @keyframes blinker {
-  50% {
-    opacity: 0;
-  }
+    50% {
+        opacity: 0;
+    }
+}
 
+.home {
+    background: gray;
+}
+
+.home:nth-of-type(322), .home:nth-of-type(323) {
+    height: 17px;
+    border-top: 3px solid black;
 }
