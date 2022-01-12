@@ -30,8 +30,16 @@
     animation: blinker 2s linear infinite;
 }
 
+
+}
+
+.pac-man{
+    background-color: yellow;
+    border-radius: 10px;
+
 @keyframes blinker {
   50% {
     opacity: 0;
   }
+
 }
