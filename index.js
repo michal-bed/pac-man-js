@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded',  () => {
 
 const GLOBAL_SPEED = 80; // ms
 let timer = null;
+let pacmanMover = null;
 let gameWin = false;
 
 // --- AUDIO --- //
@@ -62,6 +63,7 @@ function checkCollision(pacmanPos, ghosts) {
       collidedGhost.pos = collidedGhost.startPos;
       score += 100;
     } else {
+      document.removeEventListener('keydown', pacmanMover)
       gameOver()
       clearInterval(timer);
     }
@@ -92,7 +94,7 @@ function startGame() {
 
 
   move_pacman();
-  document.addEventListener('keydown', () => { move_pacman(); checkCollision(pacmanCurrentIndex, ghosts);})
+  document.addEventListener('keydown', pacmanMover = () => { move_pacman(); checkCollision(pacmanCurrentIndex, ghosts);})
   timer = setInterval(() => gameLoop(null, ghosts), GLOBAL_SPEED);
 }
 
