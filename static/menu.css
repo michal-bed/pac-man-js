@@ -10,20 +10,17 @@
 /*}*/
 
 .menu {
-    background-image: url("./image/pacman-menu.jpg");
+    background-image: url("./image/PAC-MAN-MENU.jpg");
     background-size: cover;
     position: absolute;
-    width: 487px;
-    height: 375px;
+    width: 687px;
+    height: 475px;
     padding-left: 20px;
     top: 50%;
     left: 50%;
     display: flex;
     align-self: auto;
     flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    border: black 2px dashed;
     transform: translate(-50%, -50%);
     z-index: 10;
 }
@@ -31,10 +28,14 @@
 .menu-button {
     display: flex;
     border-style: none;
-    margin-bottom: 8px;
-    margin-left: 160px;
-    font-size: 20px;
-    background: white;
+    margin-bottom: 18px;
+    margin-left: 25px;
+    font-size: 30px;
+    color: #dec302;
+    background: none;
+    font-family: "Copperplate Gothic Light";
+    font-weight: bold;
+
 }
 
 #start-button {
@@ -47,6 +48,7 @@
 
 #instruction:hover {
     background: pink;
+
 }
 
 #high-score:hover {
@@ -59,11 +61,14 @@
 }
 
 .menu-alert {
+    position: absolute;
     background: white;
-    height: 375px;
+    height: 100%;
+    width: 100%;
+    left: 0%;
     opacity: 0.95;
     text-align: justify;
-    padding: 20px 20px 20px 0;
+    padding: 20px 20px 20px 20px;
     line-height: 1.5;
 }
 
