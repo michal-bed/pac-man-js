@@ -1,6 +1,5 @@
 import { DIRECTIONS, OBJECT_TYPE, BOARD_SIZE } from './setup';
-<<<<<<< HEAD
-import { pacmanCurrentIndex} from "./level";
+import { pacmanCurrentIndex } from './pac_man';
 // Create an array from the directions objects key
 const keys = Object.keys(DIRECTIONS);
 
@@ -37,8 +36,10 @@ function getCoordinates(position) {
   return [position % BOARD_SIZE, Math.floor(position / BOARD_SIZE)]
 }
 
-function isXCoordCloser(ghostPos, nextMovePos, pacmanPos) {
+function isXCoordCloser(ghostPos, nextMovePos, pacmanPos, objectExist) {
   const [ghostX, ghostY] = getCoordinates(ghostPos);
+  if (objectExist(ghostPos, 'escape_home'))
+    pacmanPos = 322// fake position to help escape home
   const [pacmanX, pacmanY] = getCoordinates(pacmanPos);
   const [ghostNextX, ghostNextY] = getCoordinates(nextMovePos);
   // console.log(pacmanPos);
@@ -48,8 +49,10 @@ function isXCoordCloser(ghostPos, nextMovePos, pacmanPos) {
   return Math.abs(ghostNextX - pacmanX) < Math.abs(ghostX - pacmanX);
 }
 
-function isYCoordCloser(ghostPos, nextMovePos, pacmanPos) {
+function isYCoordCloser(ghostPos, nextMovePos, pacmanPos, objectExist) {
   const [ghostX, ghostY] = getCoordinates(ghostPos);
+  if (objectExist(ghostPos, 'escape_home'))
+    pacmanPos = 322 // fake position to help escape home
   const [pacmanX, pacmanY] = getCoordinates(pacmanPos);
   const [ghostNextX, ghostNextY] = getCoordinates(nextMovePos);
   return Math.abs(ghostNextY - pacmanY) < Math.abs(ghostY - pacmanY);
@@ -81,26 +84,32 @@ function shuffle(arr)
   return array;
 }
 
-function getRandomNextPos(ghostPos, objectExist)
+function getRandomNextPos(ghostPos, objectExist, pacmanPos)
 {
   let nextMovePos
   let shuffled_keys = shuffle(keys);
+  let isGettingCloser = false;
+
   for (let key of shuffled_keys)
   {
     nextMovePos = ghostPos + DIRECTIONS[key].movement;
     if (!(objectExist(nextMovePos, OBJECT_TYPE.WALL) || objectExist(nextMovePos, OBJECT_TYPE.GHOST)))
     {
-      return nextMovePos
+      // isGettingCloser = (isXCoordCloser(ghostPos, nextMovePos, pacmanPos) ||
+      //   isYCoordCloser(ghostPos, nextMovePos, pacmanPos));
+      // if (isGettingCloser)
+        return nextMovePos
     }
   }
   return null;
 }
 
-export function smarterMovement(ghostPos, direction, objectExist, pacmanPos=pacmanCurrentIndex) {
+export function smarterMovementInit(ghostPos, direction, objectExist, pacmanPos=pacmanCurrentIndex) {
   let dir = direction;
   let nextMovePos = ghostPos + dir.movement;
   let count = 0;
   let isGettingCloser = false;
+  let foundPacman = false;
 
   do {
     dir = direction;
@@ -119,6 +128,7 @@ export function smarterMovement(ghostPos, direction, objectExist, pacmanPos=pacm
     }
     else if (!objectExist(nextMovePos, OBJECT_TYPE.WALL) && !objectExist(nextMovePos, OBJECT_TYPE.GHOST))
     {
+      console.log(`Getting closer [${nextMovePos}`)
       return { nextMovePos, direction: dir };
     }
 
@@ -138,69 +148,35 @@ export function smarterMovement(ghostPos, direction, objectExist, pacmanPos=pacm
   return { nextMovePos, direction: dir };
 }
 
-export function smarterMovement(ghostPos, direction, objectExist, pacmanPos=null) {
-  let dir = direction;
-  let nextMovePos = ghostPos + dir.movement;
-  // console.log(ghostPos)
-
+export function smarterMovement(ghostPos, direction, objectExist, pacmanPos=pacmanCurrentIndex) {
+  let dir;
+  let isGettingCloser = false;
+  let foundPacman = false;
   let count = 0;
-  while (
-  objectExist(nextMovePos, OBJECT_TYPE.WALL) ||
-  objectExist(nextMovePos, OBJECT_TYPE.GHOST)
-  ) {
-    // Get a random key from that array
-    const key = keys[Math.floor(Math.random() * keys.length)];
-    // Set the new direction
-    dir = DIRECTIONS[key];
-    // Set the next move
-    nextMovePos = ghostPos + dir.movement;
-    const [ghostX, ghostY] = getCoordinates(ghostPos);
-    const [pacmanX, pacmanY] = getCoordinates(pacmanPos);
-    const [ghostNextX, ghostNextY] = getCoordinates(nextMovePos);
-
-    function isXCoordCloser() {
-      return Math.abs(ghostNextX - pacmanX) < Math.abs(ghostX - pacmanX);
-    }
-
-    function isYCoordCloser() {
-      return Math.abs(ghostNextY - pacmanY) < Math.abs(ghostY - pacmanY);
-    }
-
-    if (!(isXCoordCloser() || isYCoordCloser())) {
+  while (true)
+  {
+    let nextMovePos = getRandomNextPos(ghostPos, objectExist, pacmanPos);
+    if (nextMovePos === null)
+    {
       nextMovePos = ghostPos;
-      break;
+      dir = direction;
+      return { nextMovePos, direction: dir };
     }
-    count++;
-    // preventing blocking of the ghost when there is no possible move
-    if (count > 25) {
-      nextMovePos = ghostPos;
-      break;
+    else {
+      isGettingCloser = (isXCoordCloser(ghostPos, nextMovePos, pacmanPos, objectExist) ||
+          isYCoordCloser(ghostPos, nextMovePos, pacmanPos, objectExist));
+      foundPacman = (ghostPos === pacmanPos);
+      if(foundPacman)
+      {
+        nextMovePos = ghostPos;
+        dir = direction;
+        return { nextMovePos, direction: dir };
+      }
+      else if (isGettingCloser)
+        return { nextMovePos, direction: dir };
+      else count++;
+      if (count > 100)
+        return { nextMovePos, direction: dir };
     }
   }
 }
-
-
-// export function smarterMovement(ghostPos, direction, objectExist, pacmanPos=pacmanCurrentIndex) {
-//   let dir;
-//   let nextMovePos;
-//   // let count = 0;
-//   // let isGettingCloser = false;
-//
-//   // Set the next move
-//   dir = direction;
-//   nextMovePos = ghostPos + dir.movement;
-//
-  // const [ghostX, ghostY] = getCoordinates(ghostPos);
-  // const [pacmanX, pacmanY] = getCoordinates(pacmanPos);
-  // const [ghostNextX, ghostNextY] = getCoordinates(nextMovePos);
-  //
-  // function isXCoordCloser() {
-  //   return (Math.abs(ghostNextX - pacmanX) < Math.abs(ghostX - pacmanX));
-  // }
-  //
-  // function isYCoordCloser() {
-  //   return (Math.abs(ghostNextY - pacmanY) < Math.abs(ghostY - pacmanY));
-  // }
-
-  // isGettingCloser = isXCoordCloser() || isYCoordCloser();
-  // if (isGettingCloser) {

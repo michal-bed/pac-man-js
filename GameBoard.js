@@ -19,7 +19,7 @@ class GameBoard {
     if (this.grid[pos].classList.contains('home'))
     {
       let ghostDiv = document.createElement('div');
-      ghostDiv.classList.add(...classes);
+      ghostDiv.classList.add(...classes, 'escape_home');
       this.grid[pos].appendChild(ghostDiv);
       // console.log('Added ghostDiv');
     }
