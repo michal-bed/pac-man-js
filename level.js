@@ -11,7 +11,6 @@ let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
 export { width, ballCount, squares, grid, scoreDisplay, createGrid, eatBall};
-
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
                 1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,

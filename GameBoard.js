@@ -16,16 +16,37 @@ class GameBoard {
   }
 
   addObject(pos, classes) {
-    this.grid[pos].classList.add(...classes);
+    if (this.grid[pos].classList.contains('home'))
+    {
+      let ghostDiv = document.createElement('div');
+      ghostDiv.classList.add(...classes, 'escape_home');
+      this.grid[pos].appendChild(ghostDiv);
+      // console.log('Added ghostDiv');
+    }
+    else {
+      this.grid[pos].classList.add(...classes);
+    }
   }
 
   removeObject(pos, classes) {
-    this.grid[pos].classList.remove(...classes);
+    if (this.grid[pos].children[0])
+    {
+      this.grid[pos].removeChild(this.grid[pos].children[0])
+      // console.log('Removed ghostDiv');
+    }
+    else
+    {
+      this.grid[pos].classList.remove(...classes);
+    }
   }
   // Can have an arrow function here cause of this binding
   objectExist(pos, object) {
+    if (this.grid[pos].children[0])
+    {
+      return this.grid[pos].children[0].classList.contains(object);
+    }
     return this.grid[pos].classList.contains(object);
-  };
+  }
 
   rotateDiv(pos, deg) {
     this.grid[pos].style.transform = `rotate(${deg}deg)`;
