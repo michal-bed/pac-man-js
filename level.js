@@ -7,7 +7,6 @@ let scoreDisplay;
 let createGrid = null;
 import { pacmanCurrentIndex } from "./pac_man";
 import soundDot from './sounds/munch.wav';
-import { playAudio } from './index';
 let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
