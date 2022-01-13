@@ -15,8 +15,22 @@ class GameBoard {
     this.DOMGrid.appendChild(div);
   }
 
-  addObject(pos, classes) {
-    this.grid[pos].classList.add(...classes);
+  addObject(pos, classes) {;
+
+    if(!this.grid[pos])
+    {
+      console.log(pos)
+    }
+    if (this.grid[pos].classList.contains('home'))
+    {
+      let ghostDiv = document.createElement('div');
+      ghostDiv.classList.add(...classes);
+      this.grid[pos].appendChild(ghostDiv);
+      // console.log('Added ghostDiv');
+    }
+    else {
+      this.grid[pos].classList.add(...classes);
+    }
   }
 
   removeObject(pos, classes) {
@@ -25,7 +39,7 @@ class GameBoard {
   // Can have an arrow function here cause of this binding
   objectExist(pos, object) {
     return this.grid[pos].classList.contains(object);
-  };
+  }
 
   rotateDiv(pos, deg) {
     this.grid[pos].style.transform = `rotate(${deg}deg)`;
