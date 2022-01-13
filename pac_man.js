@@ -1,10 +1,15 @@
-import {squares, width, ballCount, eatBall} from "./level";
+import {squares, width, ballCount, score, eatBall} from "./level";
+import soundGameOver from "./sounds/death.wav";
+import gameWin from "./sounds/03. You Win!.wav";
+
+
 let pacmanCurrentIndex = 490
 export {move_pacman, pacmanCurrentIndex, pacman}
+
 function move_pacman(superBallActive) {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
-    if (ballCount===0){
-        alert('Game Over')
+    if (ballCount === 270) {
+        gameOver(pacman)
     }
 
     window.addEventListener("keydown", function (event) {
@@ -21,7 +26,7 @@ function move_pacman(superBallActive) {
                     pacmanCurrentIndex -= 1
                     squares[pacmanCurrentIndex].setAttribute('style', 'transform: rotate(180deg);')
                 }
-                if((pacmanCurrentIndex - 1) === 363){
+                if ((pacmanCurrentIndex - 1) === 363) {
                     pacmanCurrentIndex = 391
                 }
                 break;
@@ -44,7 +49,7 @@ function move_pacman(superBallActive) {
                     squares[pacmanCurrentIndex].classList.remove('pac-man')
                     pacmanCurrentIndex += 1
                 }
-                if ((pacmanCurrentIndex +1) === 392){
+                if ((pacmanCurrentIndex + 1) === 392) {
                     pacmanCurrentIndex = 364
                 }
                 break;
@@ -69,8 +74,8 @@ function move_pacman(superBallActive) {
     eatBall(squares[pacmanCurrentIndex], superBallActive)
 }
 
-class pacman{
-    constructor(position = 490, time=null, direction='', superBall=false, speed=0) {
+class pacman {
+    constructor(position = 490, time = null, direction = '', superBall = false, speed = 0) {
         this.position = position;
         this.time = time;
         this.direction = direction;
@@ -79,3 +84,15 @@ class pacman{
     }
 
 }
+
+function gameOver(pacman) {
+    playAudio(gameWin);
+    document.querySelector(".game_over").classList.remove('hide');
+
+}
+
+function playAudio(audio) {
+    const soundEffect = new Audio(audio);
+    soundEffect.play();
+}
+
