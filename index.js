@@ -1,13 +1,13 @@
 import { createGrid, squares, ballCount, grid, superBallActive } from "./level"
 import { OBJECT_TYPE } from './setup';
 import { randomMovement, smarterMovement } from './ghostmoves';
-import {move_pacman, pacmanCurrentIndex} from "./pac_man";
+import { move_pacman, pacmanCurrentIndex } from "./pac_man";
 
 // Classes
 import GameBoard from './GameBoard';
 import Ghost from './Ghost';
 // Sounds
-import soundDot from './sounds/munch.wav';
+// import soundDot from './sounds/munch.wav';
 import soundPill from './sounds/pill.wav';
 import soundGameStart from './sounds/game_start.wav';
 import soundGameOver from './sounds/death.wav';
@@ -33,7 +33,7 @@ let gameWin = false;
 // let superBallActive = false;
 
 // --- AUDIO --- //
-function playAudio(audio) {
+export function playAudio(audio) {
   const soundEffect = new Audio(audio);
   soundEffect.play();
 }
@@ -87,7 +87,7 @@ function gameLoop(pacman, ghosts) {
   ghosts.forEach((ghost) => gameBoard.moveCharacter(ghost));
   // 4. Do a new ghost collision check on the new positions
   checkCollision(pacmanCurrentIndex, ghosts);
-  change_scare_mode(ghosts)
+  change_scare_mode(ghosts);
   // // 8. Check if all balls have been eaten
   // if (gameBoard.ballCount === 0) {
   //   gameWin = true;
@@ -103,22 +103,22 @@ function startGame() {
   gameBoard = new GameBoard(ballCount, squares, gameGrid);
   gameWin = false;
   //score = 0;
+
+  startButton.classList.add('hide');
+
+  createGrid()
   const ghosts = [
     new Ghost(5, 387, randomMovement, OBJECT_TYPE.BLINKY),
     new Ghost(5, 366, smarterMovement, OBJECT_TYPE.PINKY), // 5
     new Ghost(4, 400, randomMovement, OBJECT_TYPE.INKY),
     new Ghost(4, 405, smarterMovement, OBJECT_TYPE.CLYDE) // 3, 408
   ];
-
-  startButton.classList.add('hide');
-
-  createGrid()
   // 1. Move Pacman
   // 2. Check Ghost collision on the old positions
-  move_pacman(superBallActive)
-  document.addEventListener('keydown', () => { move_pacman(superBallActive); checkCollision(pacmanCurrentIndex, ghosts);})
-
   // Gameloop
+  
+  move_pacman();
+  document.addEventListener('keydown', () => { move_pacman(); checkCollision(pacmanCurrentIndex, ghosts);})
   timer = setInterval(() => gameLoop(null, ghosts), GLOBAL_SPEED);
 }
 

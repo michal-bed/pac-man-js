@@ -41,6 +41,10 @@ class GameBoard {
   }
   // Can have an arrow function here cause of this binding
   objectExist(pos, object) {
+    if (!this.grid[pos])
+    {
+      console.log("pos = " + pos + ", obj = " + object);
+    }
     if (this.grid[pos].children[0])
     {
       return this.grid[pos].children[0].classList.contains(object);

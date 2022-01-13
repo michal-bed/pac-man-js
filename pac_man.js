@@ -1,12 +1,12 @@
 import {squares, width, ballCount, score, eatBall} from "./level";
 import soundGameOver from "./sounds/death.wav";
 import gameWin from "./sounds/03. You Win!.wav";
-
+import { superBallActive } from "./level"
 
 let pacmanCurrentIndex = 490
 export {move_pacman, pacmanCurrentIndex, pacman}
 
-function move_pacman(superBallActive) {
+function move_pacman() {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
     if (ballCount === 270) {
         gameOver(pacman)

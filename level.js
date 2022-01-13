@@ -5,7 +5,9 @@ let ballCount = 0;
 let grid;
 let scoreDisplay;
 let createGrid = null;
-import {pacmanCurrentIndex} from "./pac_man";
+import { pacmanCurrentIndex } from "./pac_man";
+import soundDot from './sounds/munch.wav';
+import { playAudio } from './index';
 let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
@@ -83,6 +85,7 @@ const POWER_PILL_TIME = 7000; // ms
 let superBallTimer = null;
 const eatBall = function (square) {
     if(square.classList.contains('ball')) {
+        playAudio(soundDot);
         square.classList.remove('ball');
         score += ballPoints;
         ballCount --;

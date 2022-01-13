@@ -93,6 +93,11 @@ function getRandomNextPos(ghostPos, objectExist, pacmanPos)
   for (let key of shuffled_keys)
   {
     nextMovePos = ghostPos + DIRECTIONS[key].movement;
+    if(!nextMovePos)
+    {
+      console.log(ghostPos+ " + " + DIRECTIONS[key].movement + ", key = " + key);
+      conole.log(DIRECTIONS["ArrowUp"]);
+    }
     if (!(objectExist(nextMovePos, OBJECT_TYPE.WALL) || objectExist(nextMovePos, OBJECT_TYPE.GHOST)))
     {
       // isGettingCloser = (isXCoordCloser(ghostPos, nextMovePos, pacmanPos) ||

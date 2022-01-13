@@ -1,6 +1,6 @@
 import { width } from './level'
 export const BOARD_SIZE = 28;
-
+console.log(-width);
 export const DIRECTIONS = {
   ArrowLeft: {
     code: 37,
@@ -9,7 +9,7 @@ export const DIRECTIONS = {
   },
   ArrowUp: {
     code: 38,
-    movement: -width,
+    movement: -BOARD_SIZE,
     rotation: 270
   },
   ArrowRight: {
@@ -19,7 +19,7 @@ export const DIRECTIONS = {
   },
   ArrowDown: {
     code: 40,
-    movement: width,
+    movement: BOARD_SIZE,
     rotation: 90
   }
 };
