@@ -4,14 +4,15 @@
     width: 560px;
     height: 560px;
     border: solid black;
-    background-color: white;
     margin: auto;
+    background-color: white;
 }
 
 .grid div {
     width: 20px;
     height: 20px;
 }
+
 
 .pieces_of_wall_horizontally {
     background-image: url("static/pixil-frame-0.png");
@@ -34,7 +35,6 @@
     border: 3px solid white;
     animation: blinker 2s linear infinite;
 }
-
 
 
 .pac-man {
@@ -75,10 +75,15 @@
 }
 
 .home {
-    background: gray;
+    background-color: gray;
 }
 
 .home:nth-of-type(322), .home:nth-of-type(323) {
     height: 17px;
     border-top: 3px solid black;
+}
+
+.pac-man {
+    background-color: yellow;
+    border-radius: 10px;
 }

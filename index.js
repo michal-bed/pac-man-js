@@ -1,11 +1,10 @@
 import { createGrid, squares, ballCount, grid} from "./level"
 import { OBJECT_TYPE } from './setup';
-import { randomMovement } from './ghostmoves';
+import { randomMovement, smarterMovement } from './ghostmoves';
 import {move_pacman, pacman} from "./pac_man";
 
 // Classes
 import GameBoard from './GameBoard';
-// import Pacman from './Pacman';
 import Ghost from './Ghost';
 // Sounds
 import soundDot from './sounds/munch.wav';
@@ -131,9 +130,9 @@ function startGame() {
 
   const ghosts = [
     new Ghost(5, 387, randomMovement, OBJECT_TYPE.BLINKY),
-    new Ghost(5, 392, randomMovement, OBJECT_TYPE.PINKY),
+    new Ghost(5, 366, smarterMovement, OBJECT_TYPE.PINKY), // 5
     new Ghost(4, 400, randomMovement, OBJECT_TYPE.INKY),
-    new Ghost(3, 408, randomMovement, OBJECT_TYPE.CLYDE)
+    new Ghost(4, 405, smarterMovement, OBJECT_TYPE.CLYDE) // 3, 408
   ];
 
   // Gameloop

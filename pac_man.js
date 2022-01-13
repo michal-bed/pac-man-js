@@ -26,9 +26,6 @@ function move_pacman(superBallActive) {
                     pacmanCurrentIndex -= 1
                     squares[pacmanCurrentIndex].setAttribute('style', 'transform: rotate(180deg);')
                 }
-                if ((pacmanCurrentIndex - 1) === 363) {
-                    pacmanCurrentIndex = 391
-                }
                 break;
             case "w":
             case "ArrowUp":
@@ -49,9 +46,7 @@ function move_pacman(superBallActive) {
                     squares[pacmanCurrentIndex].classList.remove('pac-man')
                     pacmanCurrentIndex += 1
                 }
-                if ((pacmanCurrentIndex + 1) === 392) {
-                    pacmanCurrentIndex = 364
-                }
+            
                 break;
             case "s":
             case "ArrowDown":
@@ -72,6 +67,19 @@ function move_pacman(superBallActive) {
     }, true);
     squares[pacmanCurrentIndex].classList.add('pac-man')
     eatBall(squares[pacmanCurrentIndex], superBallActive)
+
+    if((pacmanCurrentIndex - 1) === 363) {
+        squares[pacmanCurrentIndex].classList.remove('pac-man')
+        pacmanCurrentIndex = 391
+        squares[pacmanCurrentIndex].classList.add('pac-man')
+        eatBall(squares[pacmanCurrentIndex], superBallActive)
+    }
+    else if ((pacmanCurrentIndex +1) === 392) {
+        squares[pacmanCurrentIndex].classList.remove('pac-man')
+        pacmanCurrentIndex = 364
+        squares[pacmanCurrentIndex].classList.add('pac-man')
+        eatBall(squares[pacmanCurrentIndex], superBallActive)
+    }
 }
 
 class pacman {

@@ -1,5 +1,5 @@
 import { width } from './level'
-const BOARD_SIZE = 28;
+export const BOARD_SIZE = 28;
 
 export const DIRECTIONS = {
   ArrowLeft: {
@@ -36,6 +36,7 @@ export const OBJECT_TYPE = {
   PACMAN: 'pacman',
   GHOST: 'ghost',
   SCARED: 'scared',
+  HOME: 'home'
 };
 
 // Lookup array for classes
@@ -49,6 +50,7 @@ export const CLASS_LIST = [
   OBJECT_TYPE.CLYDE,
   OBJECT_TYPE.PILL,
   OBJECT_TYPE.PACMAN,
+  OBJECT_TYPE.HOME,
 ];
 
 export const MOVEMENT = {
