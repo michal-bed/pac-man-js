@@ -8,7 +8,7 @@ export {move_pacman, pacmanCurrentIndex, pacman}
 
 function move_pacman(superBallActive) {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
-    if (ballCount === 0) {
+    if (ballCount === 1) {
         gameOver(pacman)
     }
 
