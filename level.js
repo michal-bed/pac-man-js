@@ -12,7 +12,8 @@ let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
 let superBallActive = false;
-export { width, ballCount, squares, grid, scoreDisplay, createGrid, eatBall, superBallActive};
+export { width, ballCount, squares, grid, scoreDisplay, createGrid, score, eatBall, superBallActive};
+import musicPill from "./sounds/pill.wav"
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
                 1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -135,4 +136,9 @@ window.onload = function () {
         creditsMenu.classList.add('hide');
     })}
     startGameButton.addEventListener('click', hideMenu);
+}
+
+function playAudio(audio) {
+    const soundEffect = new Audio(audio);
+    soundEffect.play();
 }

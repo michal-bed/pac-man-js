@@ -3,10 +3,11 @@
 <head>
     <title>Javascript Game</title>
     <meta charset="UTF-8">
-
+    <link rel="stylesheet" href="static/game_over.css">
     <link rel="stylesheet" href="static/menu.css">
     <link rel="stylesheet" href="level.css">
     <link rel="stylesheet" href="static/style.css">
+
 </head>
 <body>
   <div class="menu">
@@ -35,10 +36,13 @@
       </div>
   </div>
   <div class="game_over hide">
-      <h3>Game Over</h3>
-      <button class="menu-button close-modal" id="start_new_game">NEW GAME</button>
+      <div class="game_over_image">
+          <a href="index.html"><img class="new_game_over" src="/static/image/new_game.png"></a>
+      </div>
+      <div id="score1" class="score_imge">
+      </div>
   </div>
-  <div class="overlay show-menu close-menu"></div>
+  <div class="overlay"></div>
   <div id="wrapper">
       <div class="grid"></div>
       <div id="score">0</div>

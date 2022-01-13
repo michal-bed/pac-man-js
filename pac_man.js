@@ -8,7 +8,7 @@ export {move_pacman, pacmanCurrentIndex, pacman}
 
 function move_pacman() {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
-    if (ballCount === 270) {
+    if (ballCount === 0) {
         gameOver(pacman)
     }
 
@@ -96,7 +96,10 @@ class pacman {
 function gameOver(pacman) {
     playAudio(gameWin);
     document.querySelector(".game_over").classList.remove('hide');
-
+    document.querySelector(".overlay").classList.remove('hide');
+    var dupa = document.getElementById('score1');
+    var HTML = `<div>Your Score: ${score}</div>`;
+    dupa.innerHTML = HTML;
 }
 
 function playAudio(audio) {
