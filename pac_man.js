@@ -1,9 +1,11 @@
-import {squares, width, eatBall} from "./level";
+import {squares, width, ballCount, eatBall} from "./level";
 let pacmanCurrentIndex = 490
-export {move_pacman, pacmanCurrentIndex, Pacman}
+export {move_pacman, pacmanCurrentIndex, pacman}
 function move_pacman(superBallActive) {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
-
+    if (ballCount===0){
+        alert('Game Over')
+    }
 
     window.addEventListener("keydown", function (event) {
         if (event.defaultPrevented) {
@@ -67,7 +69,7 @@ function move_pacman(superBallActive) {
     eatBall(squares[pacmanCurrentIndex], superBallActive)
 }
 
-class Pacman{
+class pacman{
     constructor(position = 490, time=null, direction='', superBall=false, speed=0) {
         this.position = position;
         this.time = time;
