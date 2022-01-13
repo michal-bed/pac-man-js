@@ -10,7 +10,8 @@ import {pacmanCurrentIndex} from "./pac_man";
 let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
-export { width, ballCount, squares, grid, scoreDisplay, createGrid, eatBall};
+let superBallActive = false;
+export { width, ballCount, squares, grid, scoreDisplay, createGrid, eatBall, superBallActive};
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
                 1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -78,7 +79,10 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
 })
 
 
-const eatBall = function (square, superBallActive) {
+// Game constants
+const POWER_PILL_TIME = 7000; // ms
+let superBallTimer = null;
+const eatBall = function (square) {
     if(square.classList.contains('ball')) {
         square.classList.remove('ball');
         score += ballPoints;
@@ -88,10 +92,13 @@ const eatBall = function (square, superBallActive) {
         score += superPoints;
         ballCount --;
         superBallActive = true;
+        clearTimeout(superBallTimer);
+        superBallTimer = setTimeout(
+        () => (superBallActive = false),
+            POWER_PILL_TIME);
     }
     document.getElementById('score').textContent = score;
 }
-
 
 
 window.onload = function () {

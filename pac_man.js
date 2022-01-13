@@ -15,7 +15,7 @@ function move_pacman(superBallActive) {
             case "a":
             case "ArrowLeft":
                 if (pacmanCurrentIndex % width !== 0 && !squares[pacmanCurrentIndex - 1].classList.contains('pieces_of_wall_horizontally') &&
-                    !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair')) {
+                    !squares[pacmanCurrentIndex - width].classList.contains('home')) {
                     squares[pacmanCurrentIndex].classList.remove('pac-man')
                     squares[pacmanCurrentIndex].setAttribute('style', 'transform: rotate(0deg);')
                     pacmanCurrentIndex -= 1
@@ -26,7 +26,7 @@ function move_pacman(superBallActive) {
             case "w":
             case "ArrowUp":
                 if (pacmanCurrentIndex - width >= 0 && !squares[pacmanCurrentIndex - width].classList.contains('pieces_of_wall_horizontally') &&
-                    !squares[pacmanCurrentIndex - width].classList.contains('ghost-lair')) {
+                    !squares[pacmanCurrentIndex - width].classList.contains('home')) {
                     squares[pacmanCurrentIndex].classList.remove('pac-man')
                     squares[pacmanCurrentIndex].setAttribute('style', 'transform: rotate(0deg)')
                     pacmanCurrentIndex -= width
@@ -37,7 +37,7 @@ function move_pacman(superBallActive) {
             case "d":
             case "ArrowRight":
                 if (pacmanCurrentIndex % width < width - 1 && !squares[pacmanCurrentIndex + 1].classList.contains('pieces_of_wall_horizontally') &&
-                    !squares[pacmanCurrentIndex + 1].classList.contains('ghost-lair')) {
+                    !squares[pacmanCurrentIndex + 1].classList.contains('home')) {
                     squares[pacmanCurrentIndex].setAttribute('style', 'transform: rotate(0deg)')
                     squares[pacmanCurrentIndex].classList.remove('pac-man')
                     pacmanCurrentIndex += 1
@@ -47,7 +47,7 @@ function move_pacman(superBallActive) {
             case "s":
             case "ArrowDown":
                 if (pacmanCurrentIndex + width < width * width && !squares[pacmanCurrentIndex + width].classList.contains('pieces_of_wall_horizontally') &&
-                    !squares[pacmanCurrentIndex + width].classList.contains('ghost-lair')) {
+                    !squares[pacmanCurrentIndex + width].classList.contains('home')) {
                     squares[pacmanCurrentIndex].classList.remove('pac-man')
                     squares[pacmanCurrentIndex].setAttribute('style', 'transform: rotate(0deg)')
                     pacmanCurrentIndex += width
@@ -62,19 +62,19 @@ function move_pacman(superBallActive) {
         event.preventDefault();
     }, true);
     squares[pacmanCurrentIndex].classList.add('pac-man')
-    eatBall(squares[pacmanCurrentIndex], superBallActive)
+    eatBall(squares[pacmanCurrentIndex])
 
     if((pacmanCurrentIndex - 1) === 363) {
         squares[pacmanCurrentIndex].classList.remove('pac-man')
         pacmanCurrentIndex = 391
         squares[pacmanCurrentIndex].classList.add('pac-man')
-        eatBall(squares[pacmanCurrentIndex], superBallActive)
+        eatBall(squares[pacmanCurrentIndex])
     }
     else if ((pacmanCurrentIndex +1) === 392) {
         squares[pacmanCurrentIndex].classList.remove('pac-man')
         pacmanCurrentIndex = 364
         squares[pacmanCurrentIndex].classList.add('pac-man')
-        eatBall(squares[pacmanCurrentIndex], superBallActive)
+        eatBall(squares[pacmanCurrentIndex])
     }
 }
 
