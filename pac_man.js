@@ -1,7 +1,7 @@
-import {squares, width} from "./level";
+import {squares, width, eatBall} from "./level";
 let pacmanCurrentIndex = 490
 export {move_pacman, pacmanCurrentIndex, Pacman}
-function move_pacman() {
+function move_pacman(superBallActive) {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
 
 
@@ -64,7 +64,7 @@ function move_pacman() {
         event.preventDefault();
     }, true);
     squares[pacmanCurrentIndex].classList.add('pac-man')
-
+    eatBall(squares[pacmanCurrentIndex], superBallActive)
 }
 
 class Pacman{

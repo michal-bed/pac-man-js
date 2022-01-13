@@ -10,7 +10,7 @@ import {pacmanCurrentIndex} from "./pac_man";
 let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
-export { width, ballCount, squares, grid, scoreDisplay, createGrid, move_pacman };
+export { width, ballCount, squares, grid, scoreDisplay, createGrid, eatBall};
 
 const layout = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
                 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
@@ -78,71 +78,6 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
   squares[pacmanCurrentIndex].classList.add('pac-man')
 })
 
-
-class Pacman{
-    constructor(position, time=null, direction='', superBall=false, speed=0) {
-        this.position = position;
-        this.time = time;
-        this.direction = direction;
-        this.superBall = superBall
-        this.speed = speed
-    }
-
-}
-let pacmanCurrentIndex = 490
-
-
-
-
-function move_pacman(superBallActive) {
-        squares[pacmanCurrentIndex].classList.remove('pac-man')
-        window.addEventListener("keydown", function (event) {
-        if (event.defaultPrevented) {
-            return;
-        }
-        switch (event.key) {
-            case "a":
-            case "ArrowLeft":
-                if(pacmanCurrentIndex % width !== 0 && !squares[pacmanCurrentIndex - 1].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex - width].classList.contains('home')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex -= 1
-                }
-                break;
-            case "w":
-            case "ArrowUp":
-                if(pacmanCurrentIndex - width >= 0 && !squares[pacmanCurrentIndex - width].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex - width].classList.contains('home')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex -= width
-                }
-                break;
-
-            case "d":
-            case "ArrowRight":
-                if(pacmanCurrentIndex % width < width -1 && !squares[pacmanCurrentIndex + 1].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex + 1].classList.contains('home')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex += 1
-                }
-                break;
-            case "s":
-            case "ArrowDown":
-                if(pacmanCurrentIndex + width < width * width && !squares[pacmanCurrentIndex + width].classList.contains('pieces_of_wall_horizontally') &&
-                !squares[pacmanCurrentIndex + width].classList.contains('home')) {
-                    squares[pacmanCurrentIndex].classList.remove('pac-man')
-                    pacmanCurrentIndex += width
-                }
-                break;
-
-            default:
-                return;
-        }
-        event.preventDefault();
-    }, true);
-    squares[pacmanCurrentIndex].classList.add('pac-man')
-    eatBall(squares[pacmanCurrentIndex], superBallActive)
-}
 
 const eatBall = function (square, superBallActive) {
     if(square.classList.contains('ball')) {
