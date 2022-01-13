@@ -5,7 +5,6 @@ let ballCount = 0;
 let grid;
 let scoreDisplay;
 let createGrid = null;
-
 import {pacmanCurrentIndex} from "./pac_man";
 let ballPoints = 10;
 let superPoints = 30;

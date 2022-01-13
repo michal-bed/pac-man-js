@@ -2,6 +2,7 @@ import { createGrid, squares, ballCount, grid, superBallActive } from "./level"
 import { OBJECT_TYPE } from './setup';
 import { randomMovement, smarterMovement } from './ghostmoves';
 import {move_pacman, pacmanCurrentIndex} from "./pac_man";
+
 // Classes
 import GameBoard from './GameBoard';
 import Ghost from './Ghost';
@@ -62,7 +63,6 @@ function change_scare_mode(ghosts) {
 
 function checkCollision(pacmanPos, ghosts) {
   const collidedGhost = ghosts.find((ghost) => pacmanPos === ghost.pos);
-
   if (collidedGhost) {
     if (superBallActive) {
       playAudio(soundGhost);
@@ -81,9 +81,8 @@ function checkCollision(pacmanPos, ghosts) {
   }
 }
 
-
-
 function gameLoop(pacman, ghosts) {
+
   // 3. Move ghosts
   ghosts.forEach((ghost) => gameBoard.moveCharacter(ghost));
   // 4. Do a new ghost collision check on the new positions
