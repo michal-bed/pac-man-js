@@ -83,11 +83,11 @@ const eatBall = function (square, superBallActive) {
     if(square.classList.contains('ball')) {
         square.classList.remove('ball');
         score += ballPoints;
-        ballCount ++;
+        ballCount --;
     } else if (square.classList.contains('super')) {
         square.classList.remove('super');
         score += superPoints;
-        ballCount ++;
+        ballCount --;
         superBallActive = true;
     }
     document.getElementById('score').textContent = score;
