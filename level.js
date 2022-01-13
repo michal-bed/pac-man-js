@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
         squares[i].classList.add('pieces_of_wall_horizontally')
       } else if (layout[i] === SUPER) {
         squares[i].classList.add('super')
+        ballCount++;
       } else if (layout[i] === GHOST_HOME) {
           squares[i].classList.add('home');
       }
