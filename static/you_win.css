@@ -1,4 +1,4 @@
-.game_over {
+.game_win {
 
     position: absolute;
     width: 50%;
@@ -15,9 +15,9 @@
 }
 
 
-.game_over_image{
+.you_win_image{
     position: absolute;
-    background-image: url("image/pac-man-game-over.jpg");
+    background-image: url("image/you_win.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -25,18 +25,18 @@
     height: 100%;
 }
 
-.new_game_over{
+.new_game_win{
     position: absolute;
     width: 17%;
-    top: 35%;
+    top: 47%;
     left: 43%;
 }
 
-.score_imge {
+.score_img_win {
     position: absolute;
     color: white;
     z-index: 10;
     font-size: 150%;
-    top: 20%;
+    top: 6%;
     left: 44%;
 }

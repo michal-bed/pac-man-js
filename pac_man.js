@@ -1,7 +1,5 @@
 import {squares, width, ballCount, score, eatBall} from "./level";
-import soundGameOver from "./sounds/death.wav";
 import gameWin from "./sounds/03. You Win!.wav";
-import { superBallActive } from "./level"
 
 let pacmanCurrentIndex = 490
 export {move_pacman, pacmanCurrentIndex, pacman}
@@ -9,7 +7,7 @@ export {move_pacman, pacmanCurrentIndex, pacman}
 function move_pacman() {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
     if (ballCount === 1) {
-        gameOver(pacman)
+        you_win(pacman)
     }
 
     window.addEventListener("keydown", function (event) {
@@ -93,13 +91,13 @@ class pacman {
 
 }
 
-function gameOver(pacman) {
+function you_win(pacman) {
     playAudio(gameWin);
-    document.querySelector(".game_over").classList.remove('hide');
+    document.querySelector(".game_win").classList.remove('hide');
     document.querySelector(".overlay").classList.remove('hide');
-    var dupa = document.getElementById('score1');
+    var info = document.getElementById('score2');
     var HTML = `<div>Your Score: ${score}</div>`;
-    dupa.innerHTML = HTML;
+    info.innerHTML = HTML;
 }
 
 function playAudio(audio) {
