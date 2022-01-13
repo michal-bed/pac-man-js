@@ -62,12 +62,12 @@ document.addEventListener('DOMContentLoaded', createGrid = () => {
 
       if(layout[i] === BALL) {
         squares[i].classList.add('ball')
-
         ballCount++;
       } else if (layout[i] === WALL) {
         squares[i].classList.add('pieces_of_wall_horizontally')
       } else if (layout[i] === SUPER) {
         squares[i].classList.add('super')
+        ballCount++;
       } else if (layout[i] === GHOST_HOME) {
           squares[i].classList.add('home');
       }
@@ -82,11 +82,11 @@ const eatBall = function (square, superBallActive) {
     if(square.classList.contains('ball')) {
         square.classList.remove('ball');
         score += ballPoints;
-        ballCount ++;
+        ballCount --;
     } else if (square.classList.contains('super')) {
         square.classList.remove('super');
         score += superPoints;
-        ballCount ++;
+        ballCount --;
         superBallActive = true;
     }
     document.getElementById('score').textContent = score;
@@ -102,8 +102,28 @@ window.onload = function () {
         overlay.classList.add('hide');
         menu.classList.add('hide');
     };
+    const credits = document.getElementById('credits');
+    const instruction = document.getElementById('instruction');
+    const creditsMenu = document.querySelector('#credit-text');
+    const instructionMenu = document.querySelector('#instruction-text');
+    const menuButtons = document.querySelector('.menu-buttons');
+    const backToMenu = document.querySelectorAll('.back-to-menu');
 
+    instruction.addEventListener('click', function () {
+        menuButtons.classList.add('hide');
+        instructionMenu.classList.remove('hide')
+    })
+
+    credits.addEventListener('click', function (){
+        menuButtons.classList.add('hide');
+        creditsMenu.classList.remove('hide');
+    })
+    for(let i=0; i<backToMenu.length; i++) {
+    backToMenu[i].addEventListener('click', function () {
+        console.log("ok")
+        menuButtons.classList.remove('hide');
+        instructionMenu.classList.add('hide');
+        creditsMenu.classList.add('hide');
+    })}
     startGameButton.addEventListener('click', hideMenu);
-
 }
-

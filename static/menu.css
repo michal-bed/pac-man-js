@@ -29,9 +29,10 @@
 }
 
 .menu-button {
+    display: flex;
     border-style: none;
     margin-bottom: 8px;
-    margin-left: 130px;
+    margin-left: 160px;
     font-size: 20px;
     background: white;
 }
@@ -55,6 +56,50 @@
 
 #credits:hover {
     background: yellow;
+}
+
+.menu-alert {
+    background: white;
+    height: 375px;
+    opacity: 0.95;
+    text-align: justify;
+    padding: 20px 20px 20px 0;
+    line-height: 1.5;
+}
+
+.menu-text {
+    margin-bottom: 10px;
+    font-family: "Comic Sans MS";
+}
+.menu-text:nth-last-child(2){
+    margin-bottom: 20px;
+}
+.menu-header {
+    margin-bottom: 15px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+}
+
+.maly-druczek {
+    font-size: small;
+    font-style: italic;
+}
+
+.good-luck {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.back-to-menu {
+  position: absolute;
+  top: 0.5rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+  border: none;
+  background: none;
 }
 
 .overlay {
