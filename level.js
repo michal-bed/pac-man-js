@@ -7,6 +7,7 @@ let scoreDisplay;
 let createGrid = null;
 import { pacmanCurrentIndex } from "./pac_man";
 import soundDot from './sounds/munch.wav';
+import soundPill from './sounds/pill.wav';
 let ballPoints = 10;
 let superPoints = 30;
 let score = 0;
@@ -90,6 +91,7 @@ const eatBall = function (square) {
         score += ballPoints;
         ballCount --;
     } else if (square.classList.contains('super')) {
+        playAudio(soundPill);
         square.classList.remove('super');
         score += superPoints;
         ballCount --;
