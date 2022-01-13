@@ -162,28 +162,3 @@ export function smarterMovement(ghostPos, direction, objectExist, pacmanPos=pacm
 
   // isGettingCloser = isXCoordCloser() || isYCoordCloser();
   // if (isGettingCloser) {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes

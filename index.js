@@ -1,9 +1,9 @@
-import { createGrid, squares, ballCount, grid } from "./level"
+import { createGrid, squares, ballCount, grid} from "./level"
 import { OBJECT_TYPE } from './setup';
 import { randomMovement, smarterMovement } from './ghostmoves';
+import {move_pacman, pacman} from "./pac_man";
 // Classes
 import GameBoard from './GameBoard';
-// import Pacman from './Pacman';
 import Ghost from './Ghost';
 // Sounds
 import soundDot from './sounds/munch.wav';
@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded',  () => {
 const POWER_PILL_TIME = 10000; // ms
 const GLOBAL_SPEED = 80; // ms
 // Initial setup
-let score = 0;
+// let score = 0;
 let timer = null;
 let gameWin = false;
-let powerPillActive = false;
-let powerPillTimer = null;
+let superBallActive = false;
+let superBallTimer = null;
 
 // --- AUDIO --- //
 function playAudio(audio) {
@@ -51,15 +51,16 @@ function gameOver(pacman) {
   gameBoard.showGameStatus(gameWin);
 
   clearInterval(timer);
-  // Show startbutton
   startButton.classList.remove('hide');
 }
+
+
 
 function checkCollision(pacman, ghosts) {
   const collidedGhost = ghosts.find((ghost) => pacman.pos === ghost.pos);
 
   if (collidedGhost) {
-    if (pacman.powerPill) {
+    if (pacman.superBall) {
       playAudio(soundGhost);
       gameBoard.removeObject(collidedGhost.pos, [
         OBJECT_TYPE.GHOST,
@@ -75,6 +76,8 @@ function checkCollision(pacman, ghosts) {
     }
   }
 }
+
+
 
 function gameLoop(pacman, ghosts) {
   // 1. Move Pacman
@@ -129,12 +132,14 @@ function startGame() {
 
   gameBoard = new GameBoard(ballCount, squares, gameGrid);
   gameWin = false;
-  powerPillActive = false;
-  score = 0;
+  superBallActive = false;
+  //score = 0;
 
   startButton.classList.add('hide');
 
   createGrid()
+  move_pacman(superBallActive)
+  document.addEventListener('keydown', () => move_pacman(superBallActive))
 
  // const pacman = new Pacman(2, 287);
  //  gameBoard.addObject(287, [OBJECT_TYPE.PACMAN]);

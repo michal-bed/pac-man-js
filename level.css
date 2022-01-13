@@ -5,21 +5,80 @@
     height: 560px;
     border: solid black;
     background-color: white;
+    margin: auto;
 }
-.grid div{
+
+.grid div {
     width: 20px;
     height: 20px;
 }
 
-.pieces_of_wall_horizontally{
+.pieces_of_wall_horizontally {
     background-image: url("static/pixil-frame-0.png");
 
+}
+
+.ball,
+.super {
+    box-sizing: border-box;
+    border-radius: 50%;
 }
 
 .ball {
     background-color: green;
     border: 5px solid white;
-    box-sizing: border-box;
-    border-radius: 50%;
+}
 
+.super {
+    background-color: red;
+    border: 3px solid white;
+    animation: blinker 2s linear infinite;
+}
+
+
+
+.pac-man {
+  transform: rotate(0deg);
+  background: yellow;
+  border: none;
+  border-radius: 50%;
+  clip-path: polygon(
+    0 0,
+    20px 0,
+    20px -5px,
+    8px 10px,
+    20px 25px,
+    20px 20px,
+    0 20px
+  );
+  animation: chew 0.2s linear forwards infinite;
+}
+
+@keyframes chew {
+  50% {
+    clip-path: polygon(
+      0 0,
+      20px 0,
+      20px 10px,
+      8px 10px,
+      20px 10px,
+      20px 20px,
+      0 20px
+    );
+  }
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.home {
+    background: gray;
+}
+
+.home:nth-of-type(322), .home:nth-of-type(323) {
+    height: 17px;
+    border-top: 3px solid black;
 }

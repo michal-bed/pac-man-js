@@ -83,3 +83,9 @@ body {
 .clyde {
   background: orange;
 }
+
+.move_up {
+  transform: rotate(45deg);
+}
+
+
