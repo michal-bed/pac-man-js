@@ -15,12 +15,7 @@ class GameBoard {
     this.DOMGrid.appendChild(div);
   }
 
-  addObject(pos, classes) {;
-
-    if(!this.grid[pos])
-    {
-      console.log(pos)
-    }
+  addObject(pos, classes) {
     if (this.grid[pos].classList.contains('home'))
     {
       let ghostDiv = document.createElement('div');
@@ -34,10 +29,22 @@ class GameBoard {
   }
 
   removeObject(pos, classes) {
-    this.grid[pos].classList.remove(...classes);
+    if (this.grid[pos].children[0])
+    {
+      this.grid[pos].removeChild(this.grid[pos].children[0])
+      // console.log('Removed ghostDiv');
+    }
+    else
+    {
+      this.grid[pos].classList.remove(...classes);
+    }
   }
   // Can have an arrow function here cause of this binding
   objectExist(pos, object) {
+    if (this.grid[pos].children[0])
+    {
+      return this.grid[pos].children[0].classList.contains(object);
+    }
     return this.grid[pos].classList.contains(object);
   }
 
