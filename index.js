@@ -1,7 +1,7 @@
 import {createGrid, squares, ballCount, superBallActive, score} from "./level"
 import { OBJECT_TYPE } from './setup';
 import { randomMovement, smarterMovement } from './ghostmoves';
-import { move_pacman, pacmanCurrentIndex } from "./pac_man";
+import { move_pacman, pacmanCurrentIndex, saveResults } from "./pac_man";
 import GameBoard from './GameBoard';
 import Ghost from './Ghost';
 import soundGameStart from './sounds/game_start.wav';
@@ -42,6 +42,7 @@ function change_scare_mode(ghosts) {
 
 function gameOver() {
     playAudio(gameloose);
+    saveResults()
     document.querySelector(".game_over").classList.remove('hide');
     document.querySelector(".overlay").classList.remove('hide');
     var info = document.getElementById('score1');

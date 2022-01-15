@@ -35,7 +35,6 @@
     background: none;
     font-family: "Copperplate Gothic Light";
     font-weight: bold;
-
 }
 
 #start-button {
@@ -119,4 +118,25 @@
 
 .hidden {
     display: none;
+}
+#top-five-scores {
+    margin-left: 5px;
+
+}
+
+#high-score-list {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;
+}
+.first-place {
+    font-size: 1.5rem;
+    margin-top: 1rem;
 }
