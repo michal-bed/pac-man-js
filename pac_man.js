@@ -1,8 +1,9 @@
 import {squares, width, ballCount, score, eatBall} from "./level";
 import gameWin from "./sounds/03. You Win!.wav";
+const highScores = JSON.parse(localStorage.getItem("scores"));
 
 let pacmanCurrentIndex = 490
-export {move_pacman, pacmanCurrentIndex, pacman}
+export {move_pacman, pacmanCurrentIndex, pacman, saveResults}
 
 function move_pacman() {
     squares[pacmanCurrentIndex].classList.remove('pac-man')
@@ -93,6 +94,7 @@ class pacman {
 
 function you_win(pacman) {
     playAudio(gameWin);
+    saveResults ()
     document.querySelector(".game_win").classList.remove('hide');
     document.querySelector(".overlay").classList.remove('hide');
     var info = document.getElementById('score2');
@@ -103,5 +105,21 @@ function you_win(pacman) {
 function playAudio(audio) {
     const soundEffect = new Audio(audio);
     soundEffect.play();
+}
+
+function saveResults () {
+    let playerName = prompt('This game stops here.. Please give your name to save your result');
+    console.log(playerName)
+    if (playerName !== "" && playerName !== null) {
+     let playerResult = { name: playerName, score: score };
+        if (localStorage.length === 0) {
+            let results = [];
+            results.push(playerResult);
+            localStorage.setItem("scores", JSON.stringify(results));
+        } else {
+            highScores.push(playerResult);
+            localStorage.setItem("scores", JSON.stringify(highScores));
+            }
+        }
 }
 
