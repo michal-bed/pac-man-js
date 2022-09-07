@@ -1,5 +1,38 @@
 # Freestyle JavaScript Game
 
+## Pac-Man game
+
+We faced with the task of creating some web-based game using Java Script, HTML and
+CSS. We chose to implement a version of well-known Pac-Man game
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/michal-bed/pac-man-js.git
+```
+
+Go to the project directory
+
+```bash
+  cd pac-man-js
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+
 ## Story
 
 By now you know the basics of Javascript. Put your knowledge to the test,
